@@ -20,7 +20,8 @@ const CONFIG = {
     },
     output: {
         path: PATH.build,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve : {
         extensions: ['*', '.json', '.js', '.jsx']
@@ -64,6 +65,7 @@ const CONFIG = {
             }
         ]
     },
+    devServer: { historyApiFallback: true, },
     plugins : [
         new htmlWebpackPlugin({
             template: PATH.appHtml,
@@ -77,8 +79,11 @@ const CONFIG = {
 if (TARGET == 'dev')
     module.exports = merge(CONFIG, {
         watch: true,
+        
     })
 
 
 if (TARGET == 'build')
-    module.exports = merge(CONFIG, {})
+    module.exports = merge(CONFIG, {
+
+    })
